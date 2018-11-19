@@ -1,14 +1,17 @@
-var mongoose = require('mongoose');
+import mongoose, { Schema } from "mongoose";
+mongoose.Promise = require("bluebird");
 
+mongoose
+  .connect(
+    "mongodb://localhost/apidb",
+    { useMongoClient: true },
+  )
+  .then(() => console.log("Connected to db"))
+  .catch(err => console.log(err));
 
-mongoose.connect('mongodb://localhost/demodb');
+const userschema = Schema({
+  username: "String",
+  password: "String",
+});
 
-
-var mongoschema = mongoose.Schema;
-
-var userschema = {
-	"username":"String",
-	"password":"String"
-};
-
-module.exports = mongoose.model("login",userschema);
+export default mongoose.model("login", userschema);
