@@ -3,7 +3,7 @@ mongoose.Promise = require("bluebird");
 
 mongoose
   .connect(
-    "mongodb://localhost/apidb",
+    "mongodb://saravyas:sara8489507766@ds155293.mlab.com:55293/users",
     { useMongoClient: true },
   )
   .then(() => console.log("Connected to db"))

@@ -1,9 +1,10 @@
-var express = require("express");
-var router = express.Router();
-var mongodata = require("../models/api");
+import express from "express";
+import mongodata from "../models/api";
+
+const router = express.Router();
 
 router
-  .route("/users")
+  .route("/")
   .get(function(req, res) {
     var resposne = {};
     mongodata.find({}, function(err, data) {
@@ -36,7 +37,7 @@ router
   });
 
 router
-  .route("/users/:id")
+  .route("/:id")
   .get(function(req, res) {
     var response = {};
     //			mongodata.findOne({username: req.params.username},function(err,data){
