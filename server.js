@@ -9,7 +9,7 @@ app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.get("/", function(req, res) {
+app.get("/", (req, res) => {
   res.send("am sara");
 });
 

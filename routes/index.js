@@ -1,46 +1,46 @@
-var express = require("express");
-var router = express.Router();
-var User = require("../models/api");
+import express from "express";
+import User from "../models/api";
+
+const router = express.Router();
 
 /* GET ALL BOOKS */
-router.get("/", function(req, res, next) {
-  User.find(function(err, products) {
+router.get("/", (req, res, next) => {
+  User.find((err, UserDetails) => {
     if (err) return next(err);
-    res.json(products);
+    res.json(UserDetails);
   });
 });
 
 /* GET SINGLE BOOK BY ID */
-router.get("/:id", function(req, res, next) {
-  User.findById(req.params.id, function(err, post) {
+router.get("/:id", (req, res, next) => {
+  User.findById(req.params.id, (err, UserDetails) => {
     if (err) return next(err);
-    res.json(post);
+    res.json(UserDetails);
   });
 });
 
 /* SAVE BOOK */
-router.post("/", function(req, res, next) {
-  User.create(req.body, function(err, post) {
+router.post("/", (req, res, next) => {
+  User.create(req.body, (err, UserDetails) => {
     if (err) return next(err);
-    res.json(post);
+    res.json(UserDetails);
   });
 });
 
 /* UPDATE BOOK */
-router.put("/:id", function(req, res, next) {
-  User.findByIdAndUpdate(req.params.id, req.body, function(err, post) {
+router.put("/:id", (req, res, next) => {
+  User.findByIdAndUpdate(req.params.id, req.body, (err, UserDetails) => {
     if (err) return next(err);
-    res.json(post);
+    res.json(UserDetails);
   });
 });
 
 /* DELETE BOOK */
-router.delete("/:id", function(req, res, next) {
-  User.findByIdAndRemove(req.params.id, req.body, function(err, post) {
+router.delete("/:id", (req, res, next) => {
+  User.findByIdAndRemove(req.params.id, req.body, (err, UserDetails) => {
     if (err) return next(err);
-    res.json(post);
+    res.json(UserDetails);
   });
 });
-
 
 module.exports = router;
