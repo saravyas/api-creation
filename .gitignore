@@ -1,2 +1,5 @@
 # Removing node modules
 /node_modules
+
+# Env variable
+.env

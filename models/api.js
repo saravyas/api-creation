@@ -1,9 +1,9 @@
 import mongoose, { Schema } from "mongoose";
+import "dotenv/config";
 mongoose.Promise = require("bluebird");
 
 mongoose
-  .connect(
-    "mongodb://saravyas:sara8489507766@ds237748.mlab.com:37748/users",
+  .connect(`mongodb://${process.env.username}:${process.env.password}@ds237748.mlab.com:37748/users`,
     { useMongoClient: true },
   )
   .then(() => console.log("Connected to db"))
