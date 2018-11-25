@@ -1,6 +1,4 @@
 import express from "express";
-import crypto from "crypto";
-
 import User from "../models/api";
 
 const router = express.Router();
@@ -25,10 +23,6 @@ router.get("/:id", (req, res, next) => {
 router.post("/", (req, res, next) => {
   User.create(req.body, (err, UserDetails) => {
     if (err) return next(err);
-    UserDetails.password = crypto
-      .createHash("sha256")
-      .update(req.body.password)
-      .digest("hex");
     res.json(UserDetails);
   });
 });
@@ -37,10 +31,6 @@ router.post("/", (req, res, next) => {
 router.put("/:id", (req, res, next) => {
   User.findByIdAndUpdate(req.params.id, req.body, (err, UserDetails) => {
     if (err) return next(err);
-    UserDetails.password = crypto
-      .createHash("sha256")
-      .update(req.body.password)
-      .digest("hex");
     res.json(UserDetails);
   });
 });
