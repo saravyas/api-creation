@@ -3,7 +3,7 @@ import User from "../models/api";
 
 const router = express.Router();
 
-/* GET ALL BOOKS */
+/* GET ALL USERS */
 router.get("/", (req, res, next) => {
   User.find((err, UserDetails) => {
     if (err) return next(err);
@@ -11,7 +11,7 @@ router.get("/", (req, res, next) => {
   });
 });
 
-/* GET SINGLE BOOK BY ID */
+/* GET SINGLE USER BY ID */
 router.get("/:id", (req, res, next) => {
   User.findById(req.params.id, (err, UserDetails) => {
     if (err) return next(err);
@@ -19,7 +19,7 @@ router.get("/:id", (req, res, next) => {
   });
 });
 
-/* SAVE BOOK */
+/* SAVE USER */
 router.post("/", (req, res, next) => {
   User.create(req.body, (err, UserDetails) => {
     if (err) return next(err);
@@ -27,7 +27,7 @@ router.post("/", (req, res, next) => {
   });
 });
 
-/* UPDATE BOOK */
+/* UPDATE USER */
 router.put("/:id", (req, res, next) => {
   User.findByIdAndUpdate(req.params.id, req.body, (err, UserDetails) => {
     if (err) return next(err);
@@ -35,7 +35,7 @@ router.put("/:id", (req, res, next) => {
   });
 });
 
-/* DELETE BOOK */
+/* DELETE USER */
 router.delete("/:id", (req, res, next) => {
   User.findByIdAndRemove(req.params.id, req.body, (err, UserDetails) => {
     if (err) return next(err);
