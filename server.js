@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.send("am sara");
+  res.json({ message: "Please enter Proper Url" });
 });
 
 app.use("/api/users", router);
